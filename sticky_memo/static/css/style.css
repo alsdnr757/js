@@ -1,3 +1,8 @@
+.change-color {
+  color: red;
+  font-weight: 700;
+}
+
 /* flex 수업 */
 /* 메인 페이지 정렬하기 */
 .index {
@@ -5,7 +10,7 @@
   flex-direction: column;
   height: 100vh;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
 
 /* 메모장 페이지 정렬하기 */
@@ -19,12 +24,11 @@ header {
 /* 모달창 정렬하기 */
 .modal-wrap {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.362);
-  top: 0  ;
+  background-color: rgba(0, 0, 0, 0.318);
+  top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-
 }
 
 .upload-form {

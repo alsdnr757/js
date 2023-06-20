@@ -1,44 +1,36 @@
-
-
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
-
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <title>Sticky memo</title>
-      </head>    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/reset.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <title>Sticky memo</title>
+  </head>
   <body>
     <div class="wrap">
       <header>
-        <button type="button" class="new-btn">새 메모</button>
+        <a href={% url 'memo_create' %} class="new-btn">새 메모</a>
         <a href="index.html" class="exit-btn">나가기</a>
       </header>
       <ul>
         {% block get_memo %}
-
-{%for memo in memos %}
-
-
-<li class="memo">
-    <p class="title">{{ memo.title }}</p>
-    <p class="content">{{ memo.content }}</p>
-    <div class="btn-wrap  ">
-        <button type="button" class="open-btn">메모 열기</button>
-        <button type="button" class="delete-btn">메모 삭제</button>
+        {% for memo in memos %}
+        <li class="memo">
+            <p class="title">{{ memo.title }}</p>
+            <p class="content">{{ memo.content }}</p>
+            <div class="btn-wrap">
+                <a href={% url 'memo_detail' memo.id %}>메모 열기</a>
+                <button type="button" class="delete-btn">메모 삭제</button>
+            </div>
+        </li>
+        {% endfor %}
+        {% endblock get_memo %}
+      </ul>
     </div>
-</li>
-{% endfor %}
-{% endblock get_memo %}
-</ul>
-</div>
 
     <!-- modal -->
     <div class="hidden modal-wrap">
@@ -57,8 +49,4 @@
     </div>
   </body>
   <script src="./js/memo.js"></script>
-  <!-- <script src="./js/memo.js"></script> -->
-  <script src="{% static 'js/memo.js' %}"></script>
-  </html>
-
-
+</html>
